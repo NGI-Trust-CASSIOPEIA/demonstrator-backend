@@ -1,0 +1,12 @@
+type: picture-elements
+image: local/kitchenNoLight.png
+elements:
+  - type: image
+    entity: switch.tasmota
+    style:
+      left: 50%
+      top: 50%
+      width: 100%
+    state_image:
+      'off': local/kitchenNoLight.png
+      'On': local/kitchenLight.png
