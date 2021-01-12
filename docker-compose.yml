@@ -1,0 +1,51 @@
+version: '3'
+services:
+    homeassistant:
+        image: homeassistant/home-assistant:latest
+        ports:
+            - 8123:8123
+        volumes:
+            - homeassistant:/config
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+        restart: always
+    influxdb:
+        image: influxdb:latest
+        ports:
+            - '8086:8086'
+        volumes:
+            - influxdb-storage:/var/lib/influxdb
+        environment:
+            - INFLUXDB_DB=cassiopeiainflux
+            - INFLUXDB_USER=cassiopeiainflux
+            - INFLUXDB_ADMIN_ENABLED=true
+            - INFLUXDB_ADMIN_USER=admin
+            - INFLUXDB_ADMIN_PASSWORD=admin
+        restart: always
+    mariadb:
+        image: mariadb:latest
+        volumes:
+            - mariadb-storage:/var/lib/mariadb
+        environment:
+            - MYSQL_ROOT_PASSWORD= admin
+            - MYSQL_DATABASE= cassiopeiamariadb
+            - MYSQL_USER= cassiopeiamariadb
+            - MYSQL_PASSWORD= cassiopeiamariadb
+        restart: always
+    mosquitto:
+        image: eclipse-mosquitto:latest
+        ports: 
+            - '1883:1883'
+            - '9001:9001'
+        volumes:
+            - mosquitto-data:/mosquitto/data
+            - mosquitto-logs:/mosquitto/logs
+            - mosquitto-conf:/mosquitto/config
+        restart: always
+volumes:
+    mariadb-storage:
+    influxdb-storage:
+    homeassistant:
+    mosquitto-data:
+    mosquitto-logs:
+    mosquitto-conf:
