@@ -4,3 +4,5 @@ homeassistant/
 influxdb/
 mariadb/
 mosquitto/
+
+env.sh
