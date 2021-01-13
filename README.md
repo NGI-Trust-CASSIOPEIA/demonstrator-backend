@@ -21,6 +21,8 @@ export MYSQL_PASSWORD=
 
 ```
 
+And run `source env.sh`
+
 2. Create the following directories:
 
     1.1 `mkdir homeassistant`
