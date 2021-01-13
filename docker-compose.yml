@@ -48,34 +48,34 @@ volumes:
         driver_opts:
             o: bind
             type: none
-            device: /./mariadb
+            device: ./mariadb
     influxdb-storage:
         driver: local
         driver_opts:
             o: bind
             type: none
-            device: /./influxdb
+            device: ./influxdb
     homeassistant:
         driver: local
         driver_opts:
             o: bind
             type: none
-            device: /./homeassistant
+            device: ./homeassistant
     mosquitto-data:
         driver: local
         driver_opts:
             o: bind
             type: none
-            device: /./mosquitto/mosquittodata
+            device: ./mosquitto/mosquittodata
     mosquitto-logs:
         driver: local
         driver_opts:
             o: bind
             type: none
-            device: /./mosquitto/mosquittologs
+            device: ./mosquitto/mosquittologs
     mosquitto-conf:
         driver: local
         driver_opts:
             o: bind
             type: none
-            device: /./mosquitto/mosquittoconf
+            device: ./mosquitto/mosquittoconf

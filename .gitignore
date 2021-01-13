@@ -1,0 +1,6 @@
+venv/
+
+homeassistant/
+influxdb/
+mariadb/
+mosquitto/
