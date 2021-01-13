@@ -7,7 +7,21 @@
 
 ## Docker
 
-1. Create the following directories:
+1. Create the env.sh file with user and passwords information
+
+```
+#!/bin/bash 
+export INFLUXDB_ADMIN_PASSWORD=
+export INFLUXDB_ADMIN_USER=
+export INFLUXDB_USER=
+
+export MYSQL_ROOT_PASSWORD= 
+export MYSQL_USER= 
+export MYSQL_PASSWORD=
+
+```
+
+2. Create the following directories:
 
     1.1 `mkdir homeassistant`
     1.2 `mkdir influxdb`
@@ -17,7 +31,7 @@
     1.6 `mkdir mosquitto/mosquittodata`
     1.7 `mkdir mosquitto/mosquittologs`
 
-2. Run: `docker-compose up`
+3. Run: `docker-compose up`
 
 ## Docker cheat sheet
 
