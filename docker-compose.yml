@@ -44,8 +44,38 @@ services:
         restart: always
 volumes:
     mariadb-storage:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: /./mariadb
     influxdb-storage:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: /./influxdb
     homeassistant:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: /./homeassistant
     mosquitto-data:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: /./mosquitto/mosquittodata
     mosquitto-logs:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: /./mosquitto/mosquittologs
     mosquitto-conf:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: /./mosquitto/mosquittoconf
