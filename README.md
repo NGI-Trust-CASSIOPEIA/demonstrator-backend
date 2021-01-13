@@ -3,8 +3,23 @@
 
 ## Requirements
 
+- Docker compose
 
-### Docker cheat sheet
+## Docker
+
+1. Create the following directories:
+
+    1.1 `mkdir homeassistant`
+    1.2 `mkdir influxdb`
+    1.3 `mkdir mariadb`
+    1.4 `mkdir mosquitto`
+    1.5 `mkdir mosquitto/mosquittoconf`
+    1.6 `mkdir mosquitto/mosquittodata`
+    1.7 `mkdir mosquitto/mosquittologs`
+
+2. Run: `docker-compose up`
+
+## Docker cheat sheet
 
 Here you can find a list of the most common docker commands:
 
