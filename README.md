@@ -21,14 +21,22 @@ export MYSQL_PASSWORD=
 
 ```
 
+And run `source env.sh`
+
 2. Create the following directories:
 
     1.1 `mkdir homeassistant`
+
     1.2 `mkdir influxdb`
+
     1.3 `mkdir mariadb`
+
     1.4 `mkdir mosquitto`
+
     1.5 `mkdir mosquitto/mosquittoconf`
+
     1.6 `mkdir mosquitto/mosquittodata`
+    
     1.7 `mkdir mosquitto/mosquittologs`
 
 3. Run: `docker-compose up`
