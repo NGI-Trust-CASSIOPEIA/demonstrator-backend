@@ -53,6 +53,7 @@ def on_message(mqttc, obj, msg):
 
 
 def loop(mqttc):
+    global done
     logger.debug("Loop start")
 
     while not done:
@@ -68,8 +69,8 @@ def loop(mqttc):
 
 
 def main():
-
     signal.signal(signal.SIGINT, exit)
+    global done
     mqttc = mqtt.Client(client_id='clients/' + CLIENT_ID)
     mqttc.will_set(f"{CLIENT_ID}/status", 'offline', retain=True)
 
