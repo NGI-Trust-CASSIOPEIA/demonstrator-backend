@@ -8,6 +8,7 @@ import sys
 import json
 import csv
 import random
+import signal
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
@@ -22,6 +23,13 @@ SENSOR_ID = 'temperature_a'
 UNITS = 'ºC'
 CLIENT_ID = f"sensor/{SENSOR_NAME}"
 connected = False
+
+done = False
+
+def exit(signalNumber, frame):  
+    global done
+    done = True
+    return
 
 
 def on_connect(mqttc, obj, flags, rc):
@@ -53,7 +61,7 @@ def on_message(mqttc, obj, msg):
 def loop(mqttc):
     logger.info("Loop start")
 
-    while True:
+    while not done:
         if not connected:
             logger.info("Not Connected")
         else:
@@ -93,6 +101,7 @@ def loop(mqttc):
 
 
 def main():
+    signal.signal(signal.SIGINT, exit)
 
     mqttc = mqtt.Client(client_id='clients/' + CLIENT_ID)
     mqttc.will_set(f"{CLIENT_ID}/status", 'offline', retain=True)
@@ -109,7 +118,7 @@ def main():
 
     logger.info("Running")
 
-    while True:
+    while not done:
         try:
             if not loop(mqttc):
                 mqttc.disconnect()
