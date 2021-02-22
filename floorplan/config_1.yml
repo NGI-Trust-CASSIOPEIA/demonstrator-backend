@@ -1,0 +1,15 @@
+type: picture-elements
+image: local/kitchenNoLight.png
+elements:
+  - type: state-badge
+    title: humidity
+    entity: sensor.humidity_1
+    style:
+      top: 28%
+      left: 44%
+  - type: state-badge
+    entity: sensor.temperature_2
+    title: temperature
+    style:
+      top: 80%
+      left: 55%
