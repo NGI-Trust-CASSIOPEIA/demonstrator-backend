@@ -5,11 +5,6 @@ Steps to add a floor plan on Home Assistant (3D view).
 To edit images: [video](https://www.youtube.com/watch?v=9p9PBtM0O8Q)
 
 
-TODO:
-
-- edit photos
-- add capacity to control on card
-
 ## Requirements
 
 - Ubuntu 20.04

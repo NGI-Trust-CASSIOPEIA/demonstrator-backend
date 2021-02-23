@@ -1,0 +1,21 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+sensor:
+  - platform: template
+    sensors:
+      timeofday:
+        friendly_name: "time of day"
+        value_template: >-
+          {% if now().hour >= 7 and now().hour < 19 %}day
+          {% else %}night
+          {% endif %}
