@@ -37,6 +37,8 @@ services:
         ports: 
             - '1883:1883'
             - '9001:9001'
+        networks:
+            - default
         volumes:
             - mosquitto-data:/mosquitto/data
             - mosquitto-logs:/mosquitto/logs
@@ -79,3 +81,9 @@ volumes:
             o: bind
             type: none
             device: ./mosquitto/mosquittoconf
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 127.0.0.1
