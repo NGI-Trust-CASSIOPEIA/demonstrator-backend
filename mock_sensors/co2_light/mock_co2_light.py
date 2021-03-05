@@ -37,9 +37,6 @@ def exit(signalNumber, frame):
 
 def on_connect(mqttc, obj, flags, rc):
     global connected
-    connected = True
-
-    logger.info(f"Connected to {mqttc._host}:{mqttc._port}")
 
     mqttc.publish(f"{CLIENT_ID}/status", 'online', retain=True)
     for t in ['co2', 'light']: 
@@ -58,7 +55,8 @@ def on_connect(mqttc, obj, flags, rc):
             logger.info(msg)
             mqttc.publish(f'homeassistant/sensor/{t}_{i+1}/config', msg, retain=True)
     
-
+    logger.info(f"Connected to {mqttc._host}:{mqttc._port}")
+    connected = True
     
     return True
 
