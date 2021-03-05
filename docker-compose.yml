@@ -37,8 +37,6 @@ services:
         ports: 
             - '1883:1883'
             - '9001:9001'
-        networks:
-            - default
         volumes:
             - mosquitto-data:/mosquitto/data
             - mosquitto-logs:/mosquitto/logs
