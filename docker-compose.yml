@@ -33,7 +33,7 @@ services:
             - MYSQL_PASSWORD= ${MYSQL_PASSWORD}
         restart: always
     mosquitto:
-        image: eclipse-mosquitto:1.6.13
+        image: eclipse-mosquitto:latest
         ports: 
             - '1883:1883'
             - '9001:9001'
