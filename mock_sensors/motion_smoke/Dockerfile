@@ -10,3 +10,10 @@ ENV PYTHONUNBUFFERED 1
 COPY ./mock_motion_smoke.py .
 COPY ./iot_telemetry_data.csv .
 ENTRYPOINT [ "python", "./mock_motion_smoke.py"]
+
+
+
+
+
+
+
