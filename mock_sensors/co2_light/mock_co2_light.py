@@ -57,7 +57,7 @@ def on_connect(mqttc, obj, flags, rc):
     
     logger.info(f"Connected to {mqttc._host}:{mqttc._port}")
     connected = True
-    
+
     return True
 
 
