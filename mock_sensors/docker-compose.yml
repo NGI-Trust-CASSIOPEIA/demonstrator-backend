@@ -6,3 +6,6 @@ services:
   sensor_co2_light:
     build: ./co2_light
     network_mode: host
+  sensor_co2_light:
+    build: ./motion_sensor
+    network_mode: host
