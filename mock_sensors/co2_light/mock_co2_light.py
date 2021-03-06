@@ -102,7 +102,7 @@ def loop(mqttc):
                     
                     value = 1.0 if bool(row[4]) == True else 0.0
                     logger.info(f"light_{sid}/state = {value}")
-                    mqttc.publish(f"light_{sid}/state", row[4] , retain=True)
+                    mqttc.publish(f"light_{sid}/state", value , retain=True)
 
         time.sleep(10)
 
