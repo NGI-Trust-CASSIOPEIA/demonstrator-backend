@@ -59,6 +59,9 @@ Here you can find a list of the most common docker commands:
 
 - Remove all images: `docker rmi -f $(docker images -a -q)`
 
+- `docker-compose down`
+
+- `docker-compose up --force-recreate`
 
 
 
