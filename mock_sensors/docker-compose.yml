@@ -7,5 +7,5 @@ services:
     build: ./co2_light
     network_mode: host
   sensor_co2_light:
-    build: ./motion_sensor
+    build: ./motion_smoke
     network_mode: host
