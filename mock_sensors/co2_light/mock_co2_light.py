@@ -47,7 +47,7 @@ def on_connect(mqttc, obj, flags, rc):
             msg = json.dumps({
                 'name': f"{t}_{i+1}",
                 'availability_topic': f'{CLIENT_ID}/status',  # Online, Offline
-                'device_class': t,
+                'device_class': None,
                 'unit_of_measurement': 'PPM' if t == 'co2' else '',
                 'unique_id': f"{t}_{i+1}",
                 'state_topic': f'{t}_{i+1}/state',  # Value published
