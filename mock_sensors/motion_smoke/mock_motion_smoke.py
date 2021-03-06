@@ -39,7 +39,7 @@ def on_connect(mqttc, obj, flags, rc):
     global connected
 
     mqttc.publish(f"{CLIENT_ID}/status", 'online', retain=True)
-    for t in ['motion', 'smoke']: 
+    for t in ['current', 'energy']: 
         logger.info(t)
         for i in range(3):
             logger.info(i)
@@ -47,7 +47,7 @@ def on_connect(mqttc, obj, flags, rc):
             msg = json.dumps({
                 'name': f"{t}_{i+1}",
                 'availability_topic': f'{CLIENT_ID}/status',  # Online, Offline
-                'device_class': 'motion' if t == 'motion' else 'smoke',
+                'device_class': 'motion' if t == 'current' else 'energy',
                 'unit_of_measurement': '' if t == 'motion' else '',
                 'unique_id': f"{t}_{i+1}",
                 'state_topic': f'{t}_{i+1}/state',  # Value published
@@ -96,8 +96,8 @@ def loop(mqttc):
                     else:
                         sid = 3
 
-                    value = 1.0 if row[7] >= 0 else 0.0
-                    #value = round(float(row[7]) + (0.5-random.random())/5,4)
+                    #value = 1.0 if row[7] >= 0 else 0.0
+                    value = round(float(row[7]) + (0.5-random.random())/5,4)
                     logger.info(f"smoke_{sid}/state = {value}")
                     mqttc.publish(f"smoke_{sid}/state", value, retain=True)
                     
