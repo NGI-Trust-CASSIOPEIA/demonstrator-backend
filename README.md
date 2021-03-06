@@ -41,6 +41,17 @@ And run `source env.sh`
 
 3. Run: `docker-compose up`
 
+
+## Configurations
+
+Due to the version 2 of Mosquitto it is necessary to add the following lines on Mosquitto configurations.
+
+1. In `mosquitto/mosquittoconf/mosquitto.conf` add:
+
+    1.1 `listener 1883`
+    1.2 `allow_anonymous true`
+
+
 ## Docker cheat sheet
 
 Here you can find a list of the most common docker commands:
@@ -59,11 +70,13 @@ Here you can find a list of the most common docker commands:
 
 - Remove all images: `docker rmi -f $(docker images -a -q)`
 
+Others:
+
 - `docker-compose down`
 
 - `docker-compose up --force-recreate`
 
-
+- `docker-compose up -d`
 
 ## License
 
