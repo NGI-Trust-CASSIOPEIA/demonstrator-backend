@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 ENV PYTHONUNBUFFERED 1
 COPY ./mock_motion_smoke.py .
 COPY ./iot_telemetry_data.csv .
-ENTRYPOINT [ "python", "./mock_motion_smoke"]
+ENTRYPOINT [ "python", "./mock_motion_smoke.py"]
