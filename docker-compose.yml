@@ -27,10 +27,10 @@ services:
         volumes:
             - mariadb-storage:/var/lib/mariadb
         environment:
-            - MYSQL_ROOT_PASSWORD= ${MYSQL_ROOT_PASSWORD}
-            - MYSQL_DATABASE= cassiopeiamariadb
-            - MYSQL_USER= ${MYSQL_USER}
-            - MYSQL_PASSWORD= ${MYSQL_PASSWORD}
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=cassiopeiamariadb
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
         restart: always
     mosquitto:
         image: eclipse-mosquitto:1.6.13
