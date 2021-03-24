@@ -23,6 +23,17 @@ services:
             - INFLUXDB_ADMIN_USER_TOKEN=admintoken123
             - INFLUXDB_USER_ORG=it
         restart: always
+        
+    #mariadb:
+    #    image: mariadb:latest
+    #    volumes:
+    #        - mariadb-storage:/var/lib/mariadb
+    #    environment:
+    #        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    #        - MYSQL_DATABASE=cassiopeiamariadb
+    #        - MYSQL_USER=${MYSQL_USER}
+    #        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
     mosquitto:
         image: eclipse-mosquitto:1.6.13
         ports: 
