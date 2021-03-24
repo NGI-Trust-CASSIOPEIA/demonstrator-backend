@@ -10,27 +10,18 @@ services:
             - /etc/timezone:/etc/timezone:ro
         restart: always
     influxdb:
-        image: influxdb:latest
+        image: bitnami/influxdb:latest
         ports:
             - '8086:8086'
         volumes:
             - influxdb-storage:/var/lib/influxdb
         environment:
-            - INFLUXDB_DB=cassiopeiainflux
+            - INFLUXDB_ADMIN_USER_PASSWORD=${INFLUXDB_PASSWORD_ADMIN}
+            - INFLUXDB_USER_BUCKET=cassiopeiainflux
             - INFLUXDB_USER=${INFLUXDB_USER}
-            - INFLUXDB_ADMIN_ENABLED=true
-            - INFLUXDB_ADMIN_USER=${INFLUXDB_ADMIN_USER}
-            - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_ADMIN_PASSWORD}
-        restart: always
-    mariadb:
-        image: mariadb:latest
-        volumes:
-            - mariadb-storage:/var/lib/mariadb
-        environment:
-            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - MYSQL_DATABASE=cassiopeiamariadb
-            - MYSQL_USER=${MYSQL_USER}
-            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - INFLUXDB_USER_PASSWORD=${INFLUXDB_PASSWORD}
+            - INFLUXDB_ADMIN_USER_TOKEN=admintoken123
+            - INFLUXDB_USER_ORG=it
         restart: always
     mosquitto:
         image: eclipse-mosquitto:1.6.13
