@@ -1,11 +1,20 @@
 version: '3'
 services:
-    homeassistant:
+    homeassistant0:
         image: homeassistant/home-assistant:latest
         ports:
             - 8123:8123
         volumes:
-            - homeassistant:/config
+            - homeassistant0:/config
+            - /etc/localtime:/etc/localtime:ro
+            - /etc/timezone:/etc/timezone:ro
+        restart: always
+    homeassistant1:
+        image: homeassistant/home-assistant:latest
+        ports:
+            - 8124:8123
+        volumes:
+            - homeassistant1:/config
             - /etc/localtime:/etc/localtime:ro
             - /etc/timezone:/etc/timezone:ro
         restart: always
@@ -57,12 +66,18 @@ volumes:
             o: bind
             type: none
             device: ./influxdb
-    homeassistant:
+    homeassistant0:
         driver: local
         driver_opts:
             o: bind
             type: none
-            device: ./homeassistant
+            device: ./homeassistant0
+    homeassistant1:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: ./homeassistant1
     mosquitto-data:
         driver: local
         driver_opts:
