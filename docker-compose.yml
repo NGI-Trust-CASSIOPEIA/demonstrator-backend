@@ -9,6 +9,9 @@ services:
             - /etc/localtime:/etc/localtime:ro
             - /etc/timezone:/etc/timezone:ro
         restart: always
+        depends_on: 
+            - influxdb
+            - mosquitto
     homeassistant1:
         image: homeassistant/home-assistant:latest
         ports:
@@ -18,6 +21,9 @@ services:
             - /etc/localtime:/etc/localtime:ro
             - /etc/timezone:/etc/timezone:ro
         restart: always
+        depends_on: 
+            - influxdb
+            - mosquitto
     influxdb:
         image: bitnami/influxdb:latest
         ports:
