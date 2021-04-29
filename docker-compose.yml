@@ -11,7 +11,6 @@ services:
         restart: always
         depends_on: 
             - influxdb
-            - mosquitto
     homeassistant1:
         image: homeassistant/home-assistant:latest
         ports:
@@ -23,7 +22,6 @@ services:
         restart: always
         depends_on: 
             - influxdb
-            - mosquitto
     influxdb:
         image: bitnami/influxdb:latest
         ports:
@@ -39,26 +37,7 @@ services:
             - INFLUXDB_USER_ORG=it
         restart: always
         
-    #mariadb:
-    #    image: mariadb:latest
-    #    volumes:
-    #        - mariadb-storage:/var/lib/mariadb
-    #    environment:
-    #        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-    #        - MYSQL_DATABASE=cassiopeiamariadb
-    #        - MYSQL_USER=${MYSQL_USER}
-    #        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
-    mosquitto:
-        image: eclipse-mosquitto:1.6.13
-        ports: 
-            - '1883:1883'
-            - '9001:9001'
-        volumes:
-            - mosquitto-data:/mosquitto/data
-            - mosquitto-logs:/mosquitto/logs
-            - mosquitto-conf:/mosquitto/config
-        restart: always
 volumes:
     mariadb-storage:
         driver: local
@@ -84,21 +63,3 @@ volumes:
             o: bind
             type: none
             device: ./homeassistant1
-    mosquitto-data:
-        driver: local
-        driver_opts:
-            o: bind
-            type: none
-            device: ./mosquitto/mosquittodata
-    mosquitto-logs:
-        driver: local
-        driver_opts:
-            o: bind
-            type: none
-            device: ./mosquitto/mosquittologs
-    mosquitto-conf:
-        driver: local
-        driver_opts:
-            o: bind
-            type: none
-            device: ./mosquitto/mosquittoconf
