@@ -1,0 +1,54 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+homeassistant:
+  name: home
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
+camera:
+  - platform: ffmpeg
+    name: camera
+    input: rtsp://10.0.12.43:8554/camera
+
+influxdb:
+  api_version: 2
+  ssl: false
+  host: influxdb
+  port: 8086
+  token: admintoken123
+  organization: it
+  bucket: cassiopeiainflux
+  include:
+    entities:
+      - sensor.temperature_1
+
+frontend:
+  extra_module_url:
+    - /local/custom-sidebar.js
+
+mqtt:
+  broker: 192.168.94.98
+
+lock:
+  - platform: mqtt
+    name: Frontdoor
+    state_topic: "home-assistant/frontdoor/"
+    command_topic: "home-assistant/frontdoor/set"
+    payload_lock: "LOCK"
+    payload_unlock: "UNLOCK"
+    state_locked: "LOCK"
+    state_unlocked: "UNLOCK"
+    optimistic: false
+    qos: 1
+    retain: true
+
